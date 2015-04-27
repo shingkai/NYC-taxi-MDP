@@ -1,0 +1,26 @@
+package sequentialMDP;
+import java.util.*;
+
+
+public class Graph {
+	
+	public Graph(){
+	}
+	
+	public void addPoint(String longit, String latit) {
+		Point newPoint = new Point(longit, latit);
+	}
+	
+	private class Point {
+		String longit;
+		String latit;
+		private Point (String longit, String latit) {
+			this.longit = longit;
+			this.latit = latit;
+		}
+	}
+	
+	private class Edge {
+		
+	}
+}

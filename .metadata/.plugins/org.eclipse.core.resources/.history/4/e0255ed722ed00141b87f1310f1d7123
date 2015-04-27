@@ -1,0 +1,16 @@
+package sequentialMDP;
+import java.util.*;
+
+
+public class Graph {
+	
+	
+	private class Point {
+		float longit;
+		float latit;
+	}
+	
+	private class Edge {
+		
+	}
+}
