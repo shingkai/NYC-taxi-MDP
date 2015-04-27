@@ -1,0 +1,10 @@
+package sequentialMDP;
+
+public class MDP {
+	
+	
+	
+	public static void main(String[] args){
+		MDP mdp = new MDP(args[1])
+	}
+}

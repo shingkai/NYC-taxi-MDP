@@ -1,0 +1,15 @@
+package sequentialMDP;
+iport java.io.*;
+
+public class MDP {
+	
+	public MDP(String file) {
+		
+		
+	
+	}
+	
+	public static void main(String[] args){
+		MDP mdp = new MDP(args[0]);
+	}
+}
