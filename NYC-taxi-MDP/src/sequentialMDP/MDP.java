@@ -1,13 +1,20 @@
 package sequentialMDP;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
 
 public class MDP {
 
 	private Graph graph;
+	private HashMap<Graph.Point, Integer> value;
+	private HashMap<Graph.Point, Integer> policy;
 
 	public MDP(String file) {
 		graph = new Graph();
+		value = new HashMap<Graph.Point, Integer>();
+		policy = new HashMap<Graph.Point, Integer>();
 		reader(file);
 	}
 
@@ -39,6 +46,14 @@ public class MDP {
 				e2.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * Initialize V for all states to the number of start trips located
+	 * at that state
+	 */
+	private void initialize() {
+		
 	}
 
 	public static void main(String[] args) {
