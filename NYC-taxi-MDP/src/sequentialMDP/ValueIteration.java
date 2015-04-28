@@ -46,6 +46,7 @@ public class ValueIteration {
 			for (Graph.Edge e : p.edges) {
 				double v = 1/p.edges.size();
 				v = v*(e.reward + gamma*prevV.get(e.dst));
+				sum += v;
 			}
 			currentV.put(p, sum);
 		}
