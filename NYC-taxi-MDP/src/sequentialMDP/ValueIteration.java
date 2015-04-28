@@ -31,6 +31,7 @@ public class ValueIteration {
 		for (String coordKey : graph.states.keySet()) {
 			Graph.Point p = graph.states.get(coordKey);
 			currentV.put(p, 1.0*p.edges.size());
+			//currentV.put(p, 0.0);
 		}
 	}
 	
@@ -45,7 +46,7 @@ public class ValueIteration {
 			Graph.Point p = graph.states.get(coordKey);
 			double sum = 0.0;
 			for (Graph.Edge e : p.edges) {
-				double v = 1/p.edges.size();
+				double v = 1.0/p.edges.size();
 				v = v*(e.reward + gamma*prevV.get(e.dst));
 				sum += v;
 			}

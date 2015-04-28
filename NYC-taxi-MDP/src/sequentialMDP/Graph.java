@@ -117,7 +117,7 @@ public class Graph {
 			this.fare = fare;
 			this.src = src;
 			this.dst = dst;
-			this.reward = fare / time;
+			this.reward = fare / time * 100; // $/sec * 100 = cents/sec
 		}
 
 		public double getReward() {

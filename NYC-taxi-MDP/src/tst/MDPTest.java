@@ -19,9 +19,9 @@ public class MDPTest {
 	
 	@Test
 	public void valueIterationTest() {
-		int k = 25;
+		int k = 100;
 		double gamma = 0.9;
-		String file = "../taxi_10k.csv";
+		String file = "../../data/01/taxi_1M.csv";
 		MDP mdp = new MDP(file);
 		ValueIteration vi = new ValueIteration(mdp.getGraph(), k, gamma);
 		vi.runAll();
