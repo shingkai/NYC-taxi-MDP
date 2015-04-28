@@ -4,19 +4,14 @@ import java.util.*;
 
 public class Graph {
 	Set<Point> states;
-	Map<Point,Set<Edge>> graph;
 
 	public Graph() {
-		graph = new HashMap<>();
+		states = new HashSet<>();
 	}
 
 	public void addPoint(String longit, String latit) {
 		Point newPoint = new Point(longit, latit);
 		states.add(newPoint);
-		if (!graph.containsKey(newPoint)) {
-			Set<Edge> newEdges = new HashSet<Edge>();
-			graph.put(newPoint, newEdges);		
-		}
 	}
 
 	public void addEdge(String longit1, String latit1, String longit2,
@@ -24,15 +19,7 @@ public class Graph {
 		Point src = new Point(longit1, latit1);
 		Point dst = new Point(longit2, latit2);
 		Edge edge = new Edge(src, dst, time, dist, fare);
-		if (!graph.containsKey(src)) {
-			Set<Edge> edges = new HashSet<Edge>();
-			edges.add(edge);
-			graph.put(src, edges);		
-		} else {
-			Set<Edge> edges = graph.get(src);
-			edges.add(edge);
-			graph.put(src, edges);
-		}
+		src.addEdge(edge);
 	}
 
 	public class Point {
