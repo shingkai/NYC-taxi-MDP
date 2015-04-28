@@ -53,7 +53,9 @@ public class MDP {
 	 * at that state
 	 */
 	private void initialize() {
-		
+		for (Graph.Point p : graph.graph.keySet()) {
+			value.put(p, graph.graph.get(p).size());
+		}
 	}
 
 	public static void main(String[] args) {
