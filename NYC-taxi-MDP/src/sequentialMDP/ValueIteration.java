@@ -6,26 +6,56 @@ public class ValueIteration {
 	
 	
 	private Graph graph;
-	private HashMap<Graph.Point, Integer> currentV;
-	private HashMap<Graph.Point, Integer> prevV;
+	private HashMap<Graph.Point, Double> currentV;
+	private HashMap<Graph.Point, Double> prevV;
 	private int numIter;
+	private double gamma;
+	private int k;
 	
-	public ValueIteration(Graph g, int n) {
-		this.graph = g;
-		this.numIter = n;
-		initialize();
+	public ValueIteration(Graph graph, int numIter, int gamma) {
+		this.graph = graph;
+		this.numIter = numIter;
+		this.gamma = gamma;
+		initialize();	
+		k = 2;
 	}
+	
 	
 	/**
 	 * Initialize V for all states to the number of start trips located
 	 * at that state
 	 */
 	private void initialize() {
-		for (Graph.Point p : graph.graph.keySet()) {
-			currentV.put(p, graph.graph.get(p).size());
+		currentV = new HashMap<Graph.Point, Double>();
+		for (String coordKey : graph.states.keySet()) {
+			Graph.Point p = graph.states.get(coordKey);
+			currentV.put(p, 1.0*p.edges.size());
 		}
 	}
-
-
-
+	
+	/**
+	 * Run one iteration of the Value Iteration algorithm
+	 */
+	public void singleIteration() {
+		prevV = currentV;
+		for (String coordKey : graph.states.keySet()) {
+			Graph.Point p = graph.states.get(coordKey);
+			double sum = 0.0;
+			for (Graph.Edge e : p.edges) {
+				double v = 1/p.edges.size();
+				v = v*(e.reward + gamma*prevV.get(e.dst));
+			}
+			currentV.put(p, sum);
+		}
+		k++;
+	}
+	
+	/**
+	 * Run iterations of the algorithm until the horizon is reached
+	 */
+	public void runAll() {
+		while (k < numIter) {
+			singleIteration();
+		}
+	}
 }
