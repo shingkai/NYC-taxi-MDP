@@ -33,6 +33,7 @@ public class Graph {
 			src = states.get(key1);
 		} else {
 			src = new Point(longit1, latit1);
+			states.put(key1, src);
 		}
 		if (states.containsKey(key2)) {
 			dst = states.get(key2);

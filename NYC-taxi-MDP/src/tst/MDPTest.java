@@ -1,6 +1,7 @@
 package tst;
 import org.junit.Test;
 
+import sequentialMDP.Graph;
 import sequentialMDP.MDP;
 import sequentialMDP.ValueIteration;
 
