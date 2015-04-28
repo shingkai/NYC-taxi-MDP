@@ -51,6 +51,14 @@ public class Graph {
 			point.print();
 		}
 	}
+	
+	public void printEdges() {
+		for (Point point : states.values()) {
+			for (Edge edge : point.getEdges()) {
+				edge.print();
+			}
+		}
+	}
 
 	/**
 	 * Class representing a single state in the MDP Contains coordinates and a
@@ -114,6 +122,13 @@ public class Graph {
 
 		public Point getDst() {
 			return this.dst;
+		}
+		
+		public void print() {
+			System.out.println("===");
+			src.print();
+			dst.print();
+			System.out.println(time +","+ fare +","+ reward);
 		}
 	}
 }

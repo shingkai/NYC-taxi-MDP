@@ -10,10 +10,11 @@ public class MDPTest {
 	
 	@Test
 	public void readerTest() {
-		String file = "../taxi_10.csv";
+		String file = "../taxi_10k.csv";
 		MDP mdp = new MDP(file);
 		Graph graph = mdp.getGraph();
 		graph.printStates();
+		graph.printEdges();
 	}
 	
 }
