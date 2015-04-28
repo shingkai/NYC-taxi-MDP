@@ -72,6 +72,8 @@ public class MDP {
 	}
 
 	public static void main(String[] args) {
+		double gamma = 0.9;
+		int k = 25;
 		MDP mdp = new MDP(args[0]);
 	}
 }
