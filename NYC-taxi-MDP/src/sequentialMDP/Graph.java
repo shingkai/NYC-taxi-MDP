@@ -21,8 +21,8 @@ public class Graph {
 
 	public void addEdge(String longit1, String latit1, String longit2,
 			String latit2, int time, float dist, float fare) {
-		Point src = new Point(longit1, latit1, PointType.START);
-		Point dst = new Point(longit2, latit2, PointType.STOP);
+		Point src = new Point(longit1, latit1);
+		Point dst = new Point(longit2, latit2);
 		Edge edge = new Edge(src, dst, time, dist, fare);
 		if (!graph.containsKey(src)) {
 			Set<Edge> edges = new HashSet<Edge>();
@@ -38,22 +38,19 @@ public class Graph {
 	public class Point {
 		String longit;
 		String latit;
-		Set<Edge> transitions;
-		PointType type;
+		Set<Edge> edges;
 
 		public Point(String longit, String latit) {
 			this.longit = longit;
 			this.latit = latit;
 		}
-
-		public Point(String longit, String latit, PointType type) {
-			this.longit = longit;
-			this.latit = latit;
-			this.type = type;
-		}
 		
 		public void addEdge(Edge edge) {
-			transitions.add(edge);
+			edges.add(edge);
+		}
+		
+		public Set<Edge> getEdges() {
+			return this.edges;
 		}
 	}
 
@@ -63,6 +60,7 @@ public class Graph {
 		float fare;
 		Point src;
 		Point dst;
+		double reward;
 
 		public Edge(Point src, Point dst, int time, float dist, float fare) {
 			this.time = time;
@@ -70,10 +68,14 @@ public class Graph {
 			this.fare = fare;
 			this.src = src;
 			this.dst = dst;
+			this.reward = fare / time;
 		}
-	}
-
-	public enum PointType {
-		START, STOP;
+		
+		public double getReward() {
+			return this.reward;
+		}
+		public Point getDst() {
+			return this.dst;
+		}
 	}
 }
