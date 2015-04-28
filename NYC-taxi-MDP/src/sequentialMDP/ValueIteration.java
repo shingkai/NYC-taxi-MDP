@@ -37,7 +37,9 @@ public class ValueIteration {
 	 * Run one iteration of the Value Iteration algorithm
 	 */
 	public void singleIteration() {
+		prevV.clear();
 		prevV = currentV;
+		currentV = new HashMap<>();
 		for (String coordKey : graph.states.keySet()) {
 			Graph.Point p = graph.states.get(coordKey);
 			double sum = 0.0;
