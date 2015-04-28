@@ -54,6 +54,7 @@ public class Graph {
 	
 	public void printEdges() {
 		for (Point point : states.values()) {
+			System.out.println("=====");
 			for (Edge edge : point.getEdges()) {
 				edge.print();
 			}
@@ -76,6 +77,8 @@ public class Graph {
 			this.longit = longit;
 			this.latit = latit;
 			this.edges = new HashSet<>();
+			Edge edge = new Edge(this, this, 1, 0, 0);
+			this.edges.add(edge);
 		}
 
 		public void addEdge(Edge edge) {
