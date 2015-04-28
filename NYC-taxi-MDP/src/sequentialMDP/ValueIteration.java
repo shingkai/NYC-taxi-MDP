@@ -12,7 +12,7 @@ public class ValueIteration {
 	private double gamma;
 	private int k;
 	
-	public ValueIteration(Graph graph, int numIter, int gamma) {
+	public ValueIteration(Graph graph, int numIter, double gamma) {
 		this.graph = graph;
 		this.numIter = numIter;
 		this.gamma = gamma;
@@ -61,5 +61,13 @@ public class ValueIteration {
 	
 	public HashMap<Graph.Point, Double> getCurrentV() {
 		return currentV;
+	}
+	
+	public void printCurrentV() {
+		for (Graph.Point point : this.currentV.keySet()) {
+			double value = this.currentV.get(point);
+			System.out.print(value + ",");
+			point.print();
+		}
 	}
 }

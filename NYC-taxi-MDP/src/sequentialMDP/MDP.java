@@ -3,7 +3,6 @@ package sequentialMDP;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class MDP {
 
@@ -90,5 +89,6 @@ public class MDP {
 		double gamma = 0.9;
 		int k = 25;
 		MDP mdp = new MDP(args[0]);
+		ValueIteration vi = new ValueIteration(mdp.getGraph(), k, gamma);
 	}
 }
