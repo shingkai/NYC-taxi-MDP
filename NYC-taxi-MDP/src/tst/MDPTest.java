@@ -1,9 +1,8 @@
 package tst;
-import sequentialMDP.*;
+import org.junit.Test;
 
-import org.junit.*;
-import org.junit.rules.*;
-import org.apache.commons.cli.*;
+import sequentialMDP.MDP;
+import sequentialMDP.ValueIteration;
 
 public class MDPTest {
 	
