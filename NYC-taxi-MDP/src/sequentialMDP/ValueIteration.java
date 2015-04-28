@@ -58,4 +58,8 @@ public class ValueIteration {
 			singleIteration();
 		}
 	}
+	
+	public HashMap<Graph.Point, Double> getCurrentV() {
+		return currentV;
+	}
 }
