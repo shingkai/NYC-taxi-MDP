@@ -8,6 +8,13 @@ public class ValueIteration {
 	private Graph graph;
 	private HashMap<Graph.Point, Integer> currentV;
 	private HashMap<Graph.Point, Integer> prevV;
+	private int numIter;
+	
+	public ValueIteration(Graph g, int n) {
+		this.graph = g;
+		this.numIter = n;
+		initialize();
+	}
 	
 	/**
 	 * Initialize V for all states to the number of start trips located
