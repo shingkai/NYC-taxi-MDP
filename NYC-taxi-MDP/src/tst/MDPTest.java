@@ -12,7 +12,7 @@ public class MDPTest {
 	public void readerTest() {
 		String file = "../taxi_10.csv";
 		MDP mdp = new MDP(file);
-			
+		Graph graph = mdp.getGraph();
 	}
 	
 }

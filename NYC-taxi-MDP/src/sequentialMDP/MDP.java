@@ -57,7 +57,10 @@ public class MDP {
 		}
 	}
 	
-
+	public Graph getGraph() {
+		return this.graph;
+	}
+	
 	public static void main(String[] args) {
 		double gamma = 0.9;
 		int k = 25;
