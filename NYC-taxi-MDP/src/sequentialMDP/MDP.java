@@ -8,13 +8,9 @@ import java.util.HashMap;
 public class MDP {
 
 	private Graph graph;
-	private HashMap<Graph.Point, Integer> value;
-	private HashMap<Graph.Point, Integer> policy;
 
 	public MDP(String file) {
 		graph = new Graph();
-		value = new HashMap<Graph.Point, Integer>();
-		policy = new HashMap<Graph.Point, Integer>();
 		reader(file);
 	}
 
@@ -61,15 +57,6 @@ public class MDP {
 		}
 	}
 	
-	/**
-	 * Initialize V for all states to the number of start trips located
-	 * at that state
-	 */
-	private void initialize() {
-		for (Graph.Point p : graph.graph.keySet()) {
-			value.put(p, graph.graph.get(p).size());
-		}
-	}
 
 	public static void main(String[] args) {
 		double gamma = 0.9;
