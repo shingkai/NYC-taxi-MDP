@@ -2,8 +2,15 @@ package sequentialMDP;
 
 import java.util.*;
 
+/**
+ * Class representing the MDP state-transition graph Contains a map of
+ * coordinates to Points
+ * 
+ * @author mschiu
+ * 
+ */
 public class Graph {
-	Map<String,Point> states;
+	Map<String, Point> states;
 
 	public Graph() {
 		states = new HashMap<>();
@@ -33,12 +40,25 @@ public class Graph {
 			dst = new Point(longit2, latit2);
 			states.put(key2, dst);
 		}
-		
+
 		Edge edge = new Edge(src, dst, time, dist, fare);
 		src.addEdge(edge);
 		states.put(key1, src);
 	}
+	
+	public void printStates() {
+		for (Point point : states.values()) {
+			point.print();
+		}
+	}
 
+	/**
+	 * Class representing a single state in the MDP Contains coordinates and a
+	 * set of edges
+	 * 
+	 * @author mschiu
+	 * 
+	 */
 	public class Point {
 		String longit;
 		String latit;
@@ -47,27 +67,30 @@ public class Graph {
 		public Point(String longit, String latit) {
 			this.longit = longit;
 			this.latit = latit;
+			this.edges = new HashSet<>();
 		}
-		
+
 		public void addEdge(Edge edge) {
 			edges.add(edge);
 		}
-		
+
 		public Set<Edge> getEdges() {
 			return this.edges;
 		}
 		
-		@Override
-		public int hashCode() {
-			return this.longit.concat(this.latit).hashCode();
-		}
-		
-		@Override
-		public boolean equals(Object that) {
-			return this.hashCode() == ((Point)that).hashCode();
+		public void print() {
+			System.out.println(longit +","+ latit);
 		}
 	}
 
+	/**
+	 * Class representing the transitions and rewards from state s to state s'
+	 * Contains trip time, trip distance, trip fare, pickup and dropoff points, and reward
+	 * The reward is calculated by trip fare / trip time ($/sec)
+	 * 
+	 * @author mschiu
+	 * 
+	 */
 	public class Edge {
 		int time;
 		float dist;
@@ -84,10 +107,11 @@ public class Graph {
 			this.dst = dst;
 			this.reward = fare / time;
 		}
-		
+
 		public double getReward() {
 			return this.reward;
 		}
+
 		public Point getDst() {
 			return this.dst;
 		}
