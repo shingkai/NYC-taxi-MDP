@@ -23,11 +23,24 @@ public class MDP {
 			String[] parts;
 			br = new BufferedReader(new FileReader(file));
 			line = br.readLine(); // read and toss out the header line
+			String pickupLongit;
+			String pickupLatit;
+			String dropoffLongit;
+			String dropoffLatit;
+			int tripTime;
+			float tripDist;
+			float tripFare;
 			while ((line = br.readLine()) != null) {
 				parts = line.split(",");
-				graph.addEdge(parts[4], parts[5], parts[6], parts[7],
-						Integer.parseInt(parts[2]), Float.parseFloat(parts[3]),
-						Float.parseFloat(parts[8]));
+				tripTime = Integer.parseInt(parts[2]);
+				tripDist = Float.parseFloat(parts[3]);
+				pickupLongit = parts[4].substring(0,7);
+				pickupLatit = parts[5].substring(0,6);
+				dropoffLongit = parts[6].substring(0,7);
+				dropoffLatit = parts[7].substring(0,6);
+				tripFare = Float.parseFloat(parts[8]);
+				graph.addEdge(pickupLongit, pickupLatit, dropoffLongit,
+						dropoffLatit, tripTime, tripDist, tripFare);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

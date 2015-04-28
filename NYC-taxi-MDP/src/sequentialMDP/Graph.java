@@ -2,8 +2,8 @@ package sequentialMDP;
 
 import java.util.*;
 
-
 public class Graph {
+	Set<Point> states;
 	Map<Point,Set<Edge>> graph;
 
 	public Graph() {
@@ -12,6 +12,7 @@ public class Graph {
 
 	public void addPoint(String longit, String latit) {
 		Point newPoint = new Point(longit, latit);
+		states.add(newPoint);
 		if (!graph.containsKey(newPoint)) {
 			Set<Edge> newEdges = new HashSet<Edge>();
 			graph.put(newPoint, newEdges);		
@@ -50,6 +51,10 @@ public class Graph {
 			this.latit = latit;
 			this.type = type;
 		}
+		
+		public void addEdge(Edge edge) {
+			transitions.add(edge);
+		}
 	}
 
 	public class Edge {
@@ -61,6 +66,7 @@ public class Graph {
 
 		public Edge(Point src, Point dst, int time, float dist, float fare) {
 			this.time = time;
+			this.dist = dist;
 			this.fare = fare;
 			this.src = src;
 			this.dst = dst;
